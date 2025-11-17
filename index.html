@@ -1,194 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PGW - Perfect Glass & Windows Systems</title>
-    <style>
-        body { margin:0; font-family: Arial, sans-serif; }
-        header { background:#0a2a43; padding:15px 20px; color:white; display:flex; justify-content:space-between; align-items:center; }
-        header .logo { font-size:22px; font-weight:bold; }
-        nav a { color:white; margin:0 10px; text-decoration:none; font-size:15px; }
-        nav a:hover { text-decoration:underline; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Perfect Glass & Windows Systems</title>
+<style>
+/* Reset & global styles */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Arial', sans-serif; color:#333; line-height:1.6; background:#f9f9f9; }
+a { text-decoration:none; color:inherit; }
 
-        .hero { background:url('https://images.unsplash.com/photo-1581091012184-5c02a0d9088b?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat; height:70vh; display:flex; align-items:center; justify-content:center; color:white; text-shadow:2px 2px 10px black; text-align:center; padding:20px; }
-        .hero h1 { font-size:42px; max-width:700px; }
+/* Header */
+header { background:#0a2a43; color:white; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; padding:15px 30px; position:sticky; top:0; z-index:1000; }
+header .logo { font-size:22px; font-weight:bold; letter-spacing:1px; }
+nav { display:flex; flex-wrap:wrap; gap:15px; }
+nav a { font-size:16px; transition:0.3s; color:white; }
+nav a:hover { color:#ffd700; }
 
-        section { padding:50px 20px; max-width:1100px; margin:auto; }
-        h2 { text-align:center; margin-bottom:20px; font-size:30px; color:#0a2a43; }
-        .about p { font-size:18px; line-height:1.6; }
+/* Hero */
+.hero { position:relative; background:url('https://images.unsplash.com/photo-1581091012184-5c02a0d9088b?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat; height:80vh; display:flex; align-items:center; justify-content:center; text-align:center; }
+.hero::before { content:''; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(10,42,67,0.6); }
+.hero h1 { position:relative; color:white; font-size:36px; max-width:800px; line-height:1.3; padding:0 15px; }
+.hero p { position:relative; color:white; font-size:18px; margin-top:15px; }
 
-        .services-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:20px; }
-        .service-box { padding:20px; background:#f5f5f5; border-radius:8px; box-shadow:0 0 10px rgba(0,0,0,0.1); }
-        .service-box h3 { margin-bottom:10px; color:#0a2a43; }
+/* Sections */
+section { padding:60px 20px; max-width:1100px; margin:auto; }
+h2 { text-align:center; font-size:32px; margin-bottom:40px; color:#0a2a43; }
 
-        .why-us ul, .products ul { line-height:1.8; font-size:17px; }
+/* About */
+.about p { font-size:18px; margin-bottom:20px; }
+.about-image { width:100%; display:flex; justify-content:center; margin-top:20px; }
+.about-image img { width:100%; max-width:800px; height:auto; border-radius:10px; object-fit:cover; }
 
-        .contact { background:#0a2a43; color:white; text-align:center; padding:50px 20px; }
-        .contact p { margin:6px 0; font-size:18px; }
+/* Grid */
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
 
-        footer { background:#00121f; color:white; text-align:center; padding:15px; font-size:14px; }
-    
-        /* Smooth fade animation */
-        .fade-in { animation: fadeIn 1.2s ease-in-out; }
-        @keyframes fadeIn {
-            from { opacity:0; transform:translateY(20px); }
-            to { opacity:1; transform:translateY(0); }
-        }
-    </style>
+.card { background:white; padding:20px; border-radius:10px; box-shadow:0 4px 15px rgba(0,0,0,0.1); transition:0.3s; }
+.card:hover { transform:translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,0.2); }
+.card img { width:100%; height:200px; object-fit:cover; border-radius:8px; }
+.card h3 { margin-top:15px; color:#0a2a43; }
+.card p { margin-top:10px; font-size:16px; }
+
+/* Why Us */
+.why-us ul { list-style: disc inside; font-size:17px; max-width:700px; margin:auto; }
+.why-us li { margin-bottom:12px; }
+
+/* Contact */
+.contact { background:#0a2a43; color:white; text-align:center; padding:60px 20px; border-radius:10px; }
+.contact p, .contact a { margin:8px 0; font-size:18px; color:white; }
+
+/* Gallery Section - Masonry Style */
+.gallery-grid { column-count:3; column-gap:15px; }
+.gallery-grid img { width:100%; margin-bottom:15px; border-radius:10px; display:block; break-inside:avoid; }
+@media(max-width:1024px){ .gallery-grid { column-count:2; } }
+@media(max-width:600px){ .gallery-grid { column-count:1; } }
+
+/* Footer */
+footer { background:#00121f; color:white; text-align:center; padding:20px; font-size:14px; }
+
+/* WhatsApp Floating Button */
+.whatsapp-btn { position:fixed; bottom:20px; right:20px; background:#25D366; color:white; padding:15px; border-radius:50%; font-size:28px; text-decoration:none; box-shadow:0 4px 15px rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center; transition:0.3s; z-index:1000; }
+.whatsapp-btn:hover { transform:scale(1.1); }
+
+/* Responsive */
+@media(max-width:768px) { .hero h1 { font-size:28px; } h2 { font-size:28px; } }
+@media(max-width:480px) { header { flex-direction:column; align-items:flex-start; } nav { width:100%; justify-content:flex-start; gap:10px; } }
+</style>
 </head>
 <body>
 
 <header>
-    <div class="logo">PGW</div>
+    <div class="logo">Perfect Glass & Windows Systems</div>
     <nav>
         <a href="#about">About</a>
         <a href="#services">Services</a>
         <a href="#products">Products</a>
         <a href="#why-us">Why Us</a>
+        <a href="#gallery">Gallery</a>
         <a href="#contact">Contact</a>
     </nav>
 </header>
 
+<!-- Hero Section -->
 <div class="hero">
-    <h1>Perfect Glass & Windows Systems – Your One‑Stop Total Glass Solution</h1>
+    <div>
+        <h1>Perfect Glass & Windows Systems</h1>
+        <p>Your One‑Stop Total Glass & Aluminium Solution for Homes, Offices, and Commercial Spaces</p>
+    </div>
 </div>
 
+<!-- About Section -->
 <section id="about" class="about">
     <h2>About Us</h2>
-    <p>
-        PGW (Perfect Glass & Windows Solutions) has been a trusted name in architectural glass and aluminium solutions since 2014. With a strong legacy in delivering precision-crafted installations, we provide premium glass products, high‑performance aluminium systems, and modern automatic entrance solutions. Our expertise extends across residential, commercial, industrial, and institutional projects—ensuring durability, aesthetics, and long‑lasting value.
-    </p>
-    <p>
-        Our commitment to innovation, quality craftsmanship, and seamless project execution has made us a preferred partner for architects, interior designers, builders, contractors, and homeowners. At PGW, we believe in offering end‑to‑end solutions—from design consultation to installation and after‑service support.
-    </p>
-    <img src="https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=1200&q=80" style="width:100%; border-radius:10px; margin-top:20px;" alt="Glass and Windows About Image" />
+    <p>Perfect Glass & Windows Systems has been a trusted name in architectural glass and aluminium solutions since 2014. We provide precision-crafted installations, premium glass products, high-performance aluminium systems, and modern automatic entrance solutions.</p>
+    <p>We work with architects, designers, builders, and homeowners to deliver durable, aesthetic, and innovative solutions. From design consultation to installation and after-service support, we offer complete end-to-end service.</p>
+    <div class="about-image">
+        <img src="https://images.unsplash.com/photo-1501183638710-841dd1904471?auto=format&fit=crop&w=1200&q=80" alt="About Perfect Glass & Windows Systems">
+    </div>
 </section>
 
+<!-- Services Section -->
 <section id="services">
     <h2>Our Services</h2>
-    <div class="services-grid">
-        <div class="service-box">
-            <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a2?auto=format&fit=crop&w=800&q=80" style="width:100%; border-radius:6px;">
+    <div class="grid">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a2?auto=format&fit=crop&w=800&q=80" alt="Aluminium Doors & Windows">
             <h3>Aluminium Doors & Windows</h3>
-            <p>Premium aluminium frames engineered for strength, aesthetics, and long‑lasting performance for homes and commercial spaces.</p>
+            <p>Premium aluminium frames designed for strength, style, and durability in residential and commercial projects.</p>
         </div>
-        <div class="service-box">
-            <img src="https://images.unsplash.com/photo-1581092580485-4c7a5c9c2f53?auto=format&fit=crop&w=800&q=80" style="width:100%; border-radius:6px;">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1581092580485-4c7a5c9c2f53?auto=format&fit=crop&w=800&q=80" alt="Automatic Systems">
             <h3>Automatic Door & Window Systems</h3>
-            <p>Smart, sensor‑based automatic sliding and swing systems ideal for offices, malls, showrooms, and airports.</p>
+            <p>Smart sliding and swing doors with sensors, ideal for offices, malls, and showrooms.</p>
         </div>
-        <div class="service-box">
-            <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=800&q=80" style="width:100%; border-radius:6px;">
-            <h3>Architectural Hardware</h3>
-            <p>High‑quality handles, hinges, locks, patch fittings, and premium hardware solutions for modern interiors.</p>
-        </div>
-        <div class="service-box">
-            <img src="https://images.unsplash.com/photo-1595428774223-ef52657f02d2?auto=format&fit=crop&w=800&q=80" style="width:100%; border-radius:6px;">
-            <h3>SS & Aluminium Railings</h3>
-            <p>Custom‑designed stainless steel and aluminium railings that combine safety with aesthetic appeal.</p>
-        </div>
-        <div class="service-box">
-            <img src="https://images.unsplash.com/photo-1594728777534-640b797afcba?auto=format&fit=crop&w=800&q=80" style="width:100%; border-radius:6px;">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1594728777534-640b797afcba?auto=format&fit=crop&w=800&q=80" alt="Spider Glazing">
             <h3>Spider Glazing</h3>
-            <p>Seamless structural glazing system offering unobstructed views with maximum transparency.</p>
+            <p>Seamless structural glazing for maximum transparency and unobstructed views.</p>
         </div>
-        <div class="service-box">
-            <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=800&q=80" style="width:100%; border-radius:6px;">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=800&q=80" alt="Curtain Walls">
             <h3>Curtain Walls & Structural Glazing</h3>
-            <p>Modern façade systems designed for superior insulation, energy efficiency, and architectural elegance.</p>
+            <p>Elegant facades that combine insulation, energy efficiency, and architectural beauty.</p>
         </div>
-    </div>
-        <div class="service-box"><h3>Automatic Door & Window Systems</h3></div>
-        <div class="service-box"><h3>Architectural Hardware</h3></div>
-        <div class="service-box"><h3>SS & Aluminium Railings</h3></div>
-        <div class="service-box"><h3>Spider Glazing</h3></div>
-        <div class="service-box"><h3>Curtain Walls & Structural Glazing</h3></div>
     </div>
 </section>
 
-<section id="products" class="products">
+<!-- Products Section -->
+<section id="products">
     <h2>Our Products</h2>
-    <div class="services-grid">
-        <div class="service-box">
-            <img src="https://images.unsplash.com/photo-1581090700227-1e37b7f7c91a?auto=format&fit=crop&w=800&q=80" style="width:100%; border-radius:6px;">
+    <div class="grid">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1581090700227-1e37b7f7c91a?auto=format&fit=crop&w=800&q=80" alt="Toughened Glass">
             <h3>Toughened Glass</h3>
-            <p>High‑strength safety glass available in multiple thicknesses for homes, offices, and commercial applications.</p>
+            <p>High-strength safety glass for homes, offices, and commercial spaces.</p>
         </div>
-        <div class="service-box">
-            <img src="https://images.unsplash.com/photo-1505576391880-b3f9d713dc1c?auto=format&fit=crop&w=800&q=80" style="width:100%; border-radius:6px;">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1505576391880-b3f9d713dc1c?auto=format&fit=crop&w=800&q=80" alt="Insulated Glass">
             <h3>Insulated Glass (DGU)</h3>
-            <p>Energy‑efficient double‑glazed units reducing noise, heat, and enhancing indoor comfort.</p>
+            <p>Double-glazed units for noise reduction, energy efficiency, and indoor comfort.</p>
         </div>
-        <div class="service-box">
-            <img src="https://images.unsplash.com/photo-1581092795360-2a5f89c8eebd?auto=format&fit=crop&w=800&q=80" style="width:100%; border-radius:6px;">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1581092795360-2a5f89c8eebd?auto=format&fit=crop&w=800&q=80" alt="Bullet Resistant Glass">
             <h3>Bullet Resistant Glass</h3>
-            <p>High‑security multilayer glass designed for banks, jewellery stores, and VIP protection zones.</p>
-        </div>
-        <div class="service-box">
-            <img src="https://images.unsplash.com/photo-1581091012184-5c02a0d9088b?auto=format&fit=crop&w=800&q=80" style="width:100%; border-radius:6px;">
-            <h3>Laminated Glass</h3>
-            <p>Safety glass with PVB layers offering enhanced durability, sound reduction, and UV protection.</p>
-        </div>
-        <div class="service-box">
-            <img src="https://images.unsplash.com/photo-1523413475771-0f6c1d49ae5b?auto=format&fit=crop&w=800&q=80" style="width:100%; border-radius:6px;">
-            <h3>Designer Glass</h3>
-            <p>Beautiful etched, stained, lacquered, and coloured glass options for premium interior aesthetics.</p>
-        </div>
-        <div class="service-box">
-            <img src="https://images.unsplash.com/photo-1556912998-6a321d0d4a58?auto=format&fit=crop&w=800&q=80" style="width:100%; border-radius:6px;">
-            <h3>Curved / Bent Glass</h3>
-            <p>Custom‑curved glass engineered for modern architectural designs and premium installations.</p>
+            <p>High-security glass for banks, jewellery stores, and VIP areas.</p>
         </div>
     </div>
 </section>
 
-<section id="why-us" class="why-us">
+<!-- Why Us Section -->
+<section id="why-us">
     <h2>Why Choose Us</h2>
     <ul>
-        <li>In‑house team of fabricators, designers & engineers</li>
+        <li>Experienced in-house team of fabricators, designers & engineers</li>
         <li>Association with reputed industry brands</li>
-        <li>Timely project completion</li>
-        <li>End‑to‑end service until project handover</li>
-        <li>Innovative & creative design solutions</li>
-        <li>Premium material quality & durability</li>
+        <li>Timely project completion with professional management</li>
+        <li>End-to-end service until project handover</li>
+        <li>Innovative and creative design solutions</li>
+        <li>Premium material quality and durability</li>
         <li>Doorstep service available</li>
     </ul>
 </section>
 
-<section id="contact" class="contact">
-    <h2 style="color:white;">Contact Us</h2>
-    <p>PGW – Perfect Glass & Windows Solutions</p>
-    <p>Shop Number 11 Galleria Market Omaxe Plaza</p>
-    <p>Sector 8 Sonipat, Pincode: 131021</p>
-    <p>Email: perfectglassandwindowsystems@gmail.com</p>
-    <p>Harish Arora – 9312651943</p>
-</section>
-
 <!-- Gallery Section -->
-<section id="gallery" style="padding:50px 20px; max-width:1100px; margin:auto;">
+<section id="gallery">
     <h2>Project Gallery</h2>
-    <div class="services-grid">
-        <img src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?auto=format&fit=crop&w=900&q=80" style="width:100%; border-radius:10px;">
-        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=80" style="width:100%; border-radius:10px;">
-        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80" style="width:100%; border-radius:10px;">
-        <img src="https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf?auto=format&fit=crop&w=900&q=80" style="width:100%; border-radius:10px;">
+    <div class="gallery-grid">
+        <img src="https://images.unsplash.com/photo-1581091012184-5c02a0d9088b?auto=format&fit=crop&w=900&q=80" alt="Project 1">
+        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=900&q=80" alt="Project 2">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80" alt="Project 3">
+        <img src="https://images.unsplash.com/photo-1487017159836-4e23ece2e4cf?auto=format&fit=crop&w=900&q=80" alt="Project 4">
+        <img src="https://images.unsplash.com/photo-1595428774223-ef52657f02d2?auto=format&fit=crop&w=900&q=80" alt="Project 5">
+        <img src="https://images.unsplash.com/photo-1523413475771-0f6c1d49ae5b?auto=format&fit=crop&w=900&q=80" alt="Project 6">
     </div>
 </section>
 
+<!-- Contact Section -->
+<section id="contact" class="contact">
+    <h2>Contact Us</h2>
+    <p>Perfect Glass & Windows Systems</p>
+    <p>Shop Number 11, Galleria Market, Omaxe Plaza</p>
+    <p>Sector 8, Sonipat, Pincode: 131021</p>
+    <p>Email: <a href="mailto:perfectglassandwindowsystems@gmail.com">perfectglassandwindowsystems@gmail.com</a></p>
+    <p>Harish Arora – <a href="tel:+919312651943">9312651943</a></p>
+</section>
+
 <!-- WhatsApp Floating Button -->
-<a href="https://wa.me/+919312651943" target="_blank" 
-   style="position:fixed; bottom:20px; right:20px; background:#25D366; color:white; 
-          padding:15px; border-radius:50%; font-size:28px; text-decoration:none; 
-          box-shadow:0 2px 10px rgba(0,0,0,0.3); display:flex; align-items:center; justify-content:center;">
-  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="white">
-    <path d="M20.52 3.48C18.7 1.66 16.14.5 13.36.5c-3.56 0-6.88 2.2-8.16 5.4-.14.3-.22.63-.22.96 0 .08 0 .16.01.23C2.28 7.66.5 11.07.5 15c0 3.73 2.77 6.8 6.34 7.49.3.05.6.08.91.08 3.55 0 6.9-2.23 7.96-5.7.12-.32.18-.66.18-1.01 0-1.29-.5-2.49-1.4-3.39-.9-.9-2.1-1.4-3.39-1.4-.31 0-.63.06-.92.17-.29.11-.55.27-.78.46l-.57.48c-.16.14-.37.2-.57.15-.21-.06-.38-.24-.42-.45l-.21-1.02c-.04-.22.05-.44.23-.58l.59-.46c.78-.62 1.18-1.54 1.18-2.5 0-1.94-1.58-3.52-3.52-3.52-1.94 0-3.52 1.58-3.52 3.52 0 .35.06.7.18 1.03l.21.61c.05.16 0 .33-.12.46l-.61.66c-.15.16-.36.25-.57.25-.13 0-.26-.03-.38-.09-.12-.06-.22-.15-.29-.26l-.37-.53c-.33-.47-.53-1.01-.53-1.59C.5 7.17 3.68 3.5 8.36 3.5c2.69 0 5.19 1.09 7.08 3.08 1.89 1.89 3.08 4.39 3.08 7.08 0 4.68-3.67 7.86-8.52 7.86-.58 0-1.12-.2-1.55-.53l-3.21-2.14c-.11-.08-.24-.13-.37-.15l-1.16-.17c-.3-.05-.57-.28-.66-.57-.09-.29 0-.61.23-.83l.51-.52c.03-.03.07-.06.11-.09l1.05-.85c.28-.23.45-.56.48-.91.03-.36-.11-.7-.37-.95L4.1 10.6c-.28-.28-.43-.66-.43-1.05 0-.83.67-1.5 1.5-1.5.4 0 .77.15 1.06.44l2.32 2.32c.26.26.64.36.99.27.36-.09.64-.37.72-.73.09-.35-.01-.73-.27-.99L6.78 7.13C5.54 5.9 4.47 5 3.36 5 1.41 5 .5 6.41.5 8.36c0 1.11.9 2.18 2.13 3.42l.57.48c.33.27.5.7.44 1.12-.06.43-.31.79-.66 1.01L2.02 14.2c-.5.33-.78.87-.78 1.45 0 1.1.9 2 2 2 2.2 0 4.39-.86 6.01-2.45l.63-.61c.3-.29.72-.42 1.12-.35.4.07.74.3.95.63l1.05 1.53c.26.38.38.82.33 1.27-.04.45-.23.86-.54 1.17l-.63.63c-.06.06-.11.13-.16.21-.03.06-.06.13-.09.2l-.12.26c-.05.09-.09.18-.11.28-.02.07-.04.14-.05.22-.01.05-.01.11-.01.16 0 .33.11.65.32.91.21.26.51.45.84.55l.17.06c.08.03.16.05.24.05.06 0 .13 0 .19-.01l.26-.04c.04-.01.08-.02.12-.03.08-.02.16-.05.23-.08.05-.02.1-.04.15-.06.1-.05.2-.11.29-.18.05-.03.09-.06.14-.09.04-.03.08-.06.12-.09.12-.09.23-.2.33-.32l1.09-1.25c.25-.29.56-.53.91-.72l3.51-2.34c.33-.22.55-.57.61-.95.05-.38-.07-.76-.33-1.06z"/>
-  </svg>
+<a href="https://wa.me/+919312651943" target="_blank" class="whatsapp-btn">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:28px;height:28px;">
 </a>
 
-    
+<!-- Footer -->
 <footer>
-    © 2025 PGW – Perfect Glass & Windows Systems All Rights Reserved.
+    © 2025 Perfect Glass & Windows Systems. All Rights Reserved.
 </footer>
 
 </body>
